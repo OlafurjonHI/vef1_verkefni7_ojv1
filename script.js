@@ -35,7 +35,7 @@ function start() {
  *
  */
 function play() {
-	const teljari = [0,0,0];
+	const teljari = [0,0];
 	let res;
 	let a = new Date();
 	do{
@@ -46,7 +46,6 @@ function play() {
 		if(res === null){
 			alert("Hætt í leik");
 			return;
-			teljari[1] = GAMES_TO_PLAY + 1;
 
 		}
 		teljari[1]++;
