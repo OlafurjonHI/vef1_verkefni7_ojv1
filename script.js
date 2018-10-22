@@ -93,7 +93,7 @@ function getQuestion(){
 		case 1:
 				a = randomNumber(1,100);
 				b = randomNumber(1,100);
-				question.spurning += a + "+" +  b;
+				question.spurning += a + " + " +  b;
 				question.svar = a+b;
 			break;
 		case 2:
@@ -101,19 +101,19 @@ function getQuestion(){
 				b = randomNumber(1,100);
 				let max = Math.max(a,b);
 				let min = Math.min(a,b);
-				question.spurning += max + "-" +  min;
+				question.spurning += max + " - " +  min;
 				question.svar = max-min;
 			break;
 		case 3:
 				a = randomNumber(1,10);
 				b = randomNumber(1,10);
-				question.spurning += a + "*" +  b;
+				question.spurning += a + " * " +  b;
 				question.svar = a*b;
 			break;
 		case 4:
 				a = randomNumber(2,10);
 				b = (a * randomNumber(2,10));
-				question.spurning += b + "/" +  a;
+				question.spurning += b + " / " +  a;
 				question.svar = b/a;
 			break;
 	}
