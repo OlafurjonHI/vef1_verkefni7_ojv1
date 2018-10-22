@@ -41,18 +41,18 @@ function play() {
 	do{
 		res = ask();
 		if(res === true){
-			teljari[0]++;
+			teljari[0]++;//telur rétt svör
 		}
 		if(res === null){
 			alert("Hætt í leik");
 			return;
 
 		}
-		teljari[1]++;
+		teljari[1]++;//telur skiptin
 	}while(GAMES_TO_PLAY > teljari[1]);
 	let b = new Date();
 	let time = (b-a) / 1000;
-	let avg = teljari[0]/time;
+	let avg = time/teljari[0];
 	alert("Þú svaraðir " + teljari[0] + " af " + GAMES_TO_PLAY + " rétt á " + time.toFixed(2) + " sekúndum\nMeðalrétt svör á sekúndu eru " + avg.toFixed(2));
 	
 }
@@ -73,7 +73,6 @@ function play() {
  */
 function ask() {
 	let q = getQuestion();
-	console.log(q.svar);
 	let svar = prompt(q.spurning,);
 
 	if(q.svar === parseInt(svar)){
