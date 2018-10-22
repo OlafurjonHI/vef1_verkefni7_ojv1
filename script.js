@@ -15,8 +15,6 @@ const GAMES_TO_PLAY = 10;
 function start() {
   alert("Markmiðið er að svara eins mörgum af dæmum rétt eins hratt og mögulegt er");
   let prompt = true;
-  
-
   while(prompt == true){
   	play();
   	prompt = confirm("Spila annan leik?");	
@@ -53,8 +51,7 @@ function play() {
 	let b = new Date();
 	let time = (b-a) / 1000;
 	let avg = time/teljari[0];
-	alert("Þú svaraðir " + teljari[0] + " af " + GAMES_TO_PLAY + " rétt á " + time.toFixed(2) + " sekúndum\nMeðalrétt svör á sekúndu eru " + avg.toFixed(2));
-	
+	alert("Þú svaraðir " + teljari[0] + " af " + GAMES_TO_PLAY + " rétt á " + time.toFixed(2) + " sekúndum\nMeðalrétt svör á sekúndu eru " + avg.toFixed(2));	
 }
 
 /**
@@ -90,10 +87,8 @@ function getQuestion(){
 		spurning: 'Hvað er ',
 		svar: 0
 	}
-
 	let a = 0;
 	let b = 0;
-
 	switch(type){
 		case 1:
 				a = randomNumber(1,100);
