@@ -5,7 +5,7 @@
  */
 
 // fasti sem segir til um hve marga leiki eigi að spila
-const GAMES_TO_PLAY = 10;
+const GAMES_TO_PLAY = 2;
 
 /**
  * Birtir upplýsingar um leik og eftir að notandi samþykkir spilar fyrsta leik
@@ -14,11 +14,9 @@ const GAMES_TO_PLAY = 10;
  */
 function start() {
   alert("Markmiðið er að svara eins mörgum af dæmum rétt eins hratt og mögulegt er");
-  let prompt = true;
-  while(prompt == true){
+  do{
   	play();
-  	prompt = confirm("Spila annan leik?");	
-	}
+	}while(confirm("Spila annan leik?"));
 }
 
 /**
@@ -33,25 +31,26 @@ function start() {
  *
  */
 function play() {
-	const teljari = [0,0];
+	let total = 0;
+	let correct = 0;
 	let res;
 	let a = new Date();
 	do{
 		res = ask();
 		if(res === true){
-			teljari[0]++;//telur rétt svör
+			correct++;//telur rétt svör
 		}
 		if(res === null){
 			alert("Hætt í leik");
 			return;
 
 		}
-		teljari[1]++;//telur skiptin
-	}while(GAMES_TO_PLAY > teljari[1]);
+		total++;//telur skiptin
+	}while(GAMES_TO_PLAY > total);
 	let b = new Date();
 	let time = (b-a) / 1000;
-	let avg = time/teljari[0];
-	alert("Þú svaraðir " + teljari[0] + " af " + GAMES_TO_PLAY + " rétt á " + time.toFixed(2) + " sekúndum\nMeðalrétt svör á sekúndu eru " + avg.toFixed(2));	
+	let avg = time/correct;
+	alert("Þú svaraðir " + correct + " af " + GAMES_TO_PLAY + " rétt á " + time.toFixed(2) + " sekúndum\nMeðalrétt svör á sekúndu eru " + avg.toFixed(2));	
 }
 
 /**
@@ -70,9 +69,10 @@ function play() {
  */
 function ask() {
 	let q = getQuestion();
-	let svar = prompt(q.spurning,);
+	console.log(q);
+	let svar = prompt(q.question,);
 
-	if(q.svar === parseInt(svar)){
+	if(q.answer === parseInt(svar)){
 		return true;
 	}
 	else if(svar === null){
@@ -83,41 +83,39 @@ function ask() {
 
 function getQuestion(){
 	const type = randomNumber(1,4);
-	const question = {
-		spurning: 'Hvað er ',
-		svar: 0
-	}
+	let	question = 'Hvað er ';
+	let	answer= 0;
 	let a = 0;
 	let b = 0;
 	switch(type){
 		case 1:
 				a = randomNumber(1,100);
 				b = randomNumber(1,100);
-				question.spurning += a + " + " +  b;
-				question.svar = a+b;
+				question += a + " + " +  b;
+				answer = a+b;
 			break;
 		case 2:
 				a = randomNumber(1,100);
 				b = randomNumber(1,100);
 				let max = Math.max(a,b);
 				let min = Math.min(a,b);
-				question.spurning += max + " - " +  min;
-				question.svar = max-min;
+				question += max + " - " +  min;
+				answer = max-min;
 			break;
 		case 3:
 				a = randomNumber(1,10);
 				b = randomNumber(1,10);
-				question.spurning += a + " * " +  b;
-				question.svar = a*b;
+				question += a + " * " +  b;
+				answer = a*b;
 			break;
 		case 4:
 				a = randomNumber(2,10);
 				b = (a * randomNumber(2,10));
-				question.spurning += b + " / " +  a;
-				question.svar = b/a;
+				question += b + " / " +  a;
+				answer = b/a;
 			break;
 	}
-	return question;
+	return {question,answer};
 }
 
 /**
