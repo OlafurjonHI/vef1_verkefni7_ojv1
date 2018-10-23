@@ -5,7 +5,7 @@
  */
 
 // fasti sem segir til um hve marga leiki eigi að spila
-const GAMES_TO_PLAY = 2;
+const GAMES_TO_PLAY = 10;
 
 /**
  * Birtir upplýsingar um leik og eftir að notandi samþykkir spilar fyrsta leik
@@ -50,7 +50,7 @@ function play() {
 	let b = new Date();
 	let time = (b-a) / 1000;
 	let avg = time/correct;
-	alert("Þú svaraðir " + correct + " af " + GAMES_TO_PLAY + " rétt á " + time.toFixed(2) + " sekúndum\nMeðalrétt svör á sekúndu eru " + avg.toFixed(2));	
+	alert(`Þú svaraðir ${correct} af ${GAMES_TO_PLAY} rétt á ${time.toFixed(2)} sekúndum\nMeðalrétt svör á sekúndu eru ${avg.toFixed(2)}`);	
 }
 
 /**
@@ -91,7 +91,7 @@ function getQuestion(){
 		case 1:
 				a = randomNumber(1,100);
 				b = randomNumber(1,100);
-				question += a + " + " +  b;
+				question += `${a} + ${b}`;
 				answer = a+b;
 			break;
 		case 2:
@@ -99,19 +99,19 @@ function getQuestion(){
 				b = randomNumber(1,100);
 				let max = Math.max(a,b);
 				let min = Math.min(a,b);
-				question += max + " - " +  min;
+				question += `${max} - ${min}`;
 				answer = max-min;
 			break;
 		case 3:
 				a = randomNumber(1,10);
 				b = randomNumber(1,10);
-				question += a + " * " +  b;
+				question += `${a} * ${b}`;
 				answer = a*b;
 			break;
 		case 4:
 				a = randomNumber(2,10);
 				b = (a * randomNumber(2,10));
-				question += b + " / " +  a;
+				question += `${b} / ${a}`;
 				answer = b/a;
 			break;
 	}
