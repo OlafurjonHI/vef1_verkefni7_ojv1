@@ -69,7 +69,6 @@ function play() {
  */
 function ask() {
 	let q = getQuestion();
-	console.log(q);
 	let svar = prompt(q.question,);
 
 	if(q.answer === parseInt(svar)){
@@ -84,7 +83,7 @@ function ask() {
 function getQuestion(){
 	const type = randomNumber(1,4);
 	let	question = 'Hvað er ';
-	let	answer= 0;
+	let	answer = 0;
 	let a = 0;
 	let b = 0;
 	switch(type){
